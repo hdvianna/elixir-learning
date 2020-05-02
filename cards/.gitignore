@@ -24,3 +24,6 @@ cards-*.tar
 
 .elixir_ls
 
+*.deck
+
+decks
