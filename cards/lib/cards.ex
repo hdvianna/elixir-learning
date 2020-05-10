@@ -1,4 +1,22 @@
 defmodule Cards do
+  @moduledoc """
+    Manage decks and cards
+
+  ### Docs are in markdown 😊:
+    - Example 1
+    - Example 2
+
+    ```
+    iex> deck = Cards.create_deck()
+    iex> {hand, deck} = Cards.deal(deck, 1)
+    iex> hand
+    ["Ace of Spades"]
+    ```
+  """
+
+  @doc"""
+    Creates a new deck
+  """
   def create_deck do
     # creates a list of strings (double-quotes)
     values = [
@@ -46,6 +64,10 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+  @doc"""
+    Divides a `deck` for a hand.
+    `hand_size` defines the size of the hand
+  """
   def deal(deck, hand_size) do
     # Returns a tuple
     Enum.split(deck, hand_size)
@@ -65,7 +87,9 @@ defmodule Cards do
     #  :ok -> :erlang.binary_to_term data #Don't use parenthesis
     #  :error -> []
     # end
+      if :true do
 
+      end
     # Last matched case statement line will return the result
     # Will use pattern matching of File.read(filename) in the case statements! 😱
     case File.read(filename) do
