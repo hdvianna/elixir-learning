@@ -23,3 +23,5 @@ erl_crash.dump
 identicon-*.tar
 
 identicons/*
+
+.elixir_ls/dialyzer_manifest_22.3_elixir-1.10.3_test
