@@ -4,7 +4,7 @@
         <li class="collection-item">
             <%= topic.title %>
             <div class="right">
-                <%= if @conn.assigns[:user] do %>
+                <%= if @conn.assigns[:user] && @conn.assigns[:user].id == topic.user_id  do %>
                     <%=link "Edit", to: topic_path(@conn, :edit, topic)%>&nbsp;
                     <%=link "Delete", to: topic_path(@conn, :delete, topic), method: :delete %>
                 <% end %>
