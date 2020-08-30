@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
-
   <body>
     <nav class="light-blue">
       <div class="nav-wrapper container">
@@ -20,7 +19,9 @@
         <ul class="right">
           <%= if @conn.assigns[:user] do %>
             <li>
-              <%= link "Sign Out", to:  auth_path(@conn, :signout) %>
+              <data id="userData" value="<%= Phoenix.Token.sign(Discuss.Endpoint, "key", @conn.assigns.user.id) %>">
+                <%= link "Sign Out", to:  auth_path(@conn, :signout) %>
+              </data>
             </li>
           <% else %>
             <li>

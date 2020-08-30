@@ -3,6 +3,7 @@ defmodule Discuss.UserSocket do
 
   ## Channels
   # channel "room:*", Discuss.RoomChannel
+  channel "comments:*", Discuss.CommentsChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket
@@ -19,9 +20,20 @@ defmodule Discuss.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
-  def connect(_params, socket) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket) do
+    case Phoenix.Token.verify(socket, "key", token) do
+      {:ok, user_id} ->
+        {:ok, assign(socket, :user_id, user_id) }
+      {:error, _error} ->
+        :error
+    end
   end
+
+  # Socket id's are topics that allow you to identify all sockets for a given user:
+  #
+  #     def id(socket), do: "users_socket:#{socket.assigns.user_id}"
+  #
+  # Would allow
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #

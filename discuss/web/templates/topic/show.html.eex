@@ -1,1 +1,11 @@
-<%= @topic.title %>
+<h5>
+    <data id="topicData" value="<%= @topic.id %>">
+        <%= @topic.title %>
+    </data>
+</h5>
+<div class="input-field">
+    <textarea id="commentField" class="materialize-textarea"></textarea>
+    <button id="addComment" class="btn"> Add Comment</button>
+</div>
+<ul id="commentList" class="collection">
+</ul>
